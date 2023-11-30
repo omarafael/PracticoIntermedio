@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import DAO.TecnicoDAO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -76,6 +77,20 @@ public class Incidente implements Serializable {
 	
 	public void setTecnico (Tecnico tecnico) {
 		this.tecnicoAsignado = tecnico;
+	}
+	
+	public List tecnicosDisponibles(Servicio especialidad) {
+		
+		TecnicoDAO tecnicoDAO = new TecnicoDAO();
+		
+		ArrayList<Tecnico> tecnicosDisponibles = (ArrayList) tecnicoDAO.findAll();
+		
+		
+		
+		
+	}	
+		
+		
 	}
 	
 }
