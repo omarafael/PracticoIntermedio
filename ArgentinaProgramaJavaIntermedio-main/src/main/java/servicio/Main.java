@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import configuracion.DBConfig;
 import modelo.Cliente;
 import modelo.Incidente;
+import modelo.ProvisionDeServicio;
 import modelo.Servicio;
 import modelo.Tecnico;
 import modelo.TipoDeProblema;
@@ -33,6 +34,11 @@ public class Main {
 		cliente1.agregarServicio(servicio3);
 		cliente1.agregarServicio(servicio4);
 		cliente2.agregarServicio(servicio2);
+		
+		ProvisionDeServicio provision1 = new ProvisionDeServicio(servicio1, cliente1, true, LocalDate.of(2020, 10, 10) );
+		ProvisionDeServicio provision2 = new ProvisionDeServicio(servicio2, cliente2, true, LocalDate.of(2020, 4, 13) );
+		ProvisionDeServicio provision3 = new ProvisionDeServicio(servicio3, cliente1, true, LocalDate.of(2020, 9, 11) );
+		ProvisionDeServicio provision4 = new ProvisionDeServicio(servicio4, cliente4, true, LocalDate.of(2020, 2, 13) );
 
 		Tecnico tecnico1 = new Tecnico ("34666123", "Juan", "Perez", "0303456", "juan@gmail.com",
 				"mail");
@@ -169,6 +175,12 @@ public class Main {
 		em.persist(incidente8);
 		tx.commit();
 	
+		tx.begin();
+		em.persist(provision1);
+		em.persist(provision2);
+		em.persist(provision3);
+		em.persist(provision4);
+		tx.commit();
 	}
 	
 	
